@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getAllEntries } from "@/lib/content";
 
 interface Post {
+  [key: string]: unknown;
   slug: string;
   title: string;
   date: string;

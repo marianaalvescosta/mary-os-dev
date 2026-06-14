@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getAllEntries } from "@/lib/content";
 
 interface WorkEntry {
+  [key: string]: unknown;
   slug: string;
   title: string;
   role: string;

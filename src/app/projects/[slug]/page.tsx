@@ -3,10 +3,12 @@ import { getSlugs, getEntryWithHtml } from "@/lib/content";
 import { notFound } from "next/navigation";
 
 interface Project {
+  [key: string]: unknown;
   name: string;
   line1: string;
   line2: string;
   tags: string[];
+  deck?: string;
 }
 
 export async function generateStaticParams() {
@@ -22,7 +24,7 @@ export default async function ProjectDetail({
   try {
     const { data, html } = await getEntryWithHtml<Project>("projects", slug);
     return (
-      <div style={{ padding: "32px 24px", maxWidth: "800px" }}>
+      <div style={{ padding: "32px 40px 48px 24px" }}>
         {/* Back button */}
         <Link
           href="/projects"
@@ -50,25 +52,41 @@ export default async function ProjectDetail({
 
         {/* Body */}
         <div
-          style={{ color: "#fff", lineHeight: "1.8", maxWidth: "65ch" }}
+          style={{ color: "#fff", lineHeight: "1.8" }}
           dangerouslySetInnerHTML={{ __html: html }}
         />
 
-        {/* Image placeholder */}
-        <div
-          style={{
-            border: "1px solid #333",
-            height: "240px",
-            marginTop: "40px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "#333",
-            fontSize: "12px",
-          }}
-        >
-          [ screenshot / image ]
-        </div>
+        {/* Pitch deck (when the project has one) — otherwise a placeholder */}
+        {data.deck ? (
+          <iframe
+            src={data.deck}
+            title={`${data.name} pitch deck`}
+            allowFullScreen
+            style={{
+              width: "100%",
+              height: "100vh",
+              border: "1px solid #333",
+              borderRadius: "12px",
+              marginTop: "40px",
+              display: "block",
+            }}
+          />
+        ) : (
+          <div
+            style={{
+              border: "1px solid #333",
+              height: "240px",
+              marginTop: "40px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "#333",
+              fontSize: "12px",
+            }}
+          >
+            [ screenshot / image ]
+          </div>
+        )}
       </div>
     );
   } catch {

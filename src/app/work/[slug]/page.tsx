@@ -3,6 +3,7 @@ import { getSlugs, getEntryWithHtml } from "@/lib/content";
 import { notFound } from "next/navigation";
 
 interface WorkEntry {
+  [key: string]: unknown;
   title: string;
   role: string;
   yearTop: string;

@@ -3,6 +3,7 @@ import { getSlugs, getEntryWithHtml } from "@/lib/content";
 import { notFound } from "next/navigation";
 
 interface Post {
+  [key: string]: unknown;
   title: string;
   month: string;
   year: string;

@@ -79,7 +79,7 @@ export default async function AutomationDetail({
 
         {/* Body */}
         <style>{`
-          .automation-body img { margin: 24px 0; display: block; }
+          .automation-body img { margin: 24px 0; display: block; max-height: 400px; width: auto; max-width: 100%; }
         `}</style>
         <div
           className="automation-body"

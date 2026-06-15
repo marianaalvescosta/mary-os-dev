@@ -48,15 +48,16 @@ This took 4+ hours to get stable. It broke multiple times. The chunked batching 
 
 ## The chat agent
 
-![Loomi chat agent](/automations/loomi-chat-agent.png)
-
 The chat feature is a two-part system.
 
 A pipeline syncs every piece of knowledge from Lovable's database to Supabase on save — embedded, vectorization-ready. Then an AI agent, triggered by the user asking a question, queries only that user's library by `user_id`. In a multi-tenant system, your knowledge is yours.
 
 The agent returns structured output: Insights · Supporting atoms · Next steps.
 
-![Loomi chat agent in use](/automations/loomi-chat-agent-screenshot.gif)
+<div style="display:flex;gap:16px;align-items:flex-start;margin:24px 0">
+  <img src="/automations/loomi-chat-agent.png" alt="Loomi chat agent pipeline" style="width:50%;object-fit:cover" />
+  <img src="/automations/loomi-chat-agent-screenshot.gif" alt="Loomi chat agent in use" style="width:50%;object-fit:cover" />
+</div>
 
 ## Stack
 

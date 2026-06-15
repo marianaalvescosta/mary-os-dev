@@ -32,7 +32,7 @@ export async function getEntryWithHtml<T extends Record<string, unknown>>(
   const filePath = path.join(contentDir, folder, `${slug}.md`);
   const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw);
-  const processed = await remark().use(remarkHtml).process(content);
+  const processed = await remark().use(remarkHtml, { sanitize: false }).process(content);
   return { data: data as T, html: processed.toString() };
 }
 

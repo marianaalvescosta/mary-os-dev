@@ -4,6 +4,8 @@ description: "Multi-platform content extraction with multi-LLM routing"
 cover: "/automations/loomi-v2-workflow.png"
 tags: ["n8n", "apify", "gemini", "gpt-4o", "supabase", "webhooks"]
 date: 2026-01-19
+product_link: "/projects/loomi"
+product_label: "See the full Loomi product"
 ---
 
 I built Loomi's extraction pipeline in n8n. This is the backend that runs every time a user pastes a social media URL — routing it, fetching the content, extracting what's useful, and returning structured knowledge.
@@ -63,8 +65,3 @@ The agent returns structured output: Insights · Supporting atoms · Next steps.
   </div>
 </div>
 
-## Stack
-
-n8n · Apify · Gemini (gemini-3-flash-preview) · GPT-4o · Supabase · Lovable · Webhooks
-
-→ [See the full Loomi product](/projects/loomi)

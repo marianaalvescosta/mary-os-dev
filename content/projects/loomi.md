@@ -19,3 +19,5 @@ Since then I've been rebuilding it properly with Claude Code — learning about 
 The current thing I'm adding is an Obsidian integration. I use my Obsidian second brain for everything — it's honestly one of the greatest things I've ever built for myself. And it makes so much sense to connect the two. Right now getting social media content into Obsidian is painful — grab the link, transcribe it, ingest it manually. Loomi should just do that. Create the markdown files, sync them straight to your vault.
 
 That's what I'm working on before I open it up.
+
+<a href="/projects/automations/loomi-extraction-pipeline" style="display:inline-block;border:1px solid #fff;padding:6px 16px;font-size:12px;color:#fff;text-decoration:none;font-family:monospace;margin-top:8px">See how the extraction pipeline works →</a>

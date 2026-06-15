@@ -5,12 +5,17 @@ line1: "Find the right therapist. Not just any therapist."
 line2: "Mental health SaaS. Therapy matching by personality and style."
 tags: ["startup", "wellness", "co-founder"]
 order: 2
+deck: "/mindbuddy-deck.html"
 ---
 
-MindBuddy matches people with therapists based on personality and communication style — not just availability and location.
+MindBuddy is a mental health app built around three features.
 
-The insight: finding therapy hard to start is often about the fit problem, not the access problem. You find someone, try a session, feel like it's not working, quit. MindBuddy tries to solve the match before the first session happens.
+Therapist matching — pairing patients with the right therapist based on personality and communication style, not just who has a slot open. Most people stop going to therapy because the fit is wrong, not because they don't want help.
 
-Features: therapist matching, an AI therapist layer, and emergency chat for in-between sessions.
+An AI twin — an AI model built with your therapist that's there for you between sessions. It's not a replacement for therapy. It's the opposite: it extends the relationship you already have with someone who actually knows your context.
 
-Co-built with Matilde. The vision exists. We're figuring out the right shape before we go back to building.
+A 24/7 emergency chat connecting you with a mental health professional for the moments when a crisis hits and you can't wait for your next session.
+
+It was my first project ever. I was 21, still studying, no idea what I was doing. I built everything — the brand, the logo (hand-drawn), the UI, the full brand guidelines, the MVPs. Matilde co-founded with me and later wrote her master's thesis on MindBuddy. We went through two acceleration programs. Mental health is a cause that's close to me — I'll leave it at that.
+
+It's on pause right now. But it's the one that started everything.

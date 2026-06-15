@@ -30,8 +30,7 @@ export default function ProjectsPage() {
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
-          gap: "0",
-          border: "1px solid #fff",
+          gap: "16px",
         }}
       >
         {projects.map((project, i) => {
@@ -40,8 +39,7 @@ export default function ProjectsPage() {
             <div
               style={{
                 padding: "20px",
-                borderRight: i % 2 === 0 ? "1px solid #fff" : "none",
-                borderBottom: i < 2 ? "1px solid #fff" : "none",
+                border: "1px solid #fff",
                 opacity: isComingSoon ? 0.35 : 1,
                 cursor: isComingSoon ? "default" : "pointer",
               }}

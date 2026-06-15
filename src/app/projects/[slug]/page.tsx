@@ -9,6 +9,8 @@ interface Project {
   line2: string;
   tags: string[];
   deck?: string;
+  button_link?: string;
+  button_label?: string;
 }
 
 export async function generateStaticParams() {
@@ -36,17 +38,27 @@ export default async function ProjectDetail({
         {/* Divider */}
         <div style={{ height: "1px", background: "#fff", marginBottom: "20px" }} />
 
-        {/* Tags */}
+        {/* Tags + optional button */}
         {data.tags?.length > 0 && (
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "28px" }}>
-            {data.tags.map((tag) => (
-              <span
-                key={tag}
-                style={{ border: "1px solid #fff", padding: "2px 8px", fontSize: "11px" }}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px", marginBottom: "28px" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+              {data.tags.map((tag) => (
+                <span
+                  key={tag}
+                  style={{ border: "1px solid #fff", padding: "2px 8px", fontSize: "11px" }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            {data.button_link && (
+              <Link
+                href={data.button_link}
+                style={{ border: "1px solid #fff", padding: "6px 16px", fontSize: "12px", color: "#fff", textDecoration: "none", whiteSpace: "nowrap", fontFamily: "monospace" }}
               >
-                {tag}
-              </span>
-            ))}
+                {data.button_label ?? "Learn more"}
+              </Link>
+            )}
           </div>
         )}
 

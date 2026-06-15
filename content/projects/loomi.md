@@ -6,6 +6,8 @@ line2: "Knowledge extraction app for social media content."
 tags: ["next.js", "claude", "supabase", "founder"]
 order: 1
 deck: "/loomi-deck.html"
+button_link: "/projects/automations/loomi-extraction-pipeline"
+button_label: "See extraction pipeline →"
 ---
 
 I consume a lot of social media content about business, productivity, tech, finance — the kind of stuff I actually want to use in my business. I always save everything and I never come back to it - when I actually needed something, I couldn't find it. Was it on my camera roll? TikTok? Instagram? YouTube? I'd spend way too long looking and still come up empty.
@@ -19,5 +21,3 @@ Since then I've been rebuilding it properly with Claude Code — learning about 
 The current thing I'm adding is an Obsidian integration. I use my Obsidian second brain for everything — it's honestly one of the greatest things I've ever built for myself. And it makes so much sense to connect the two. Right now getting social media content into Obsidian is painful — grab the link, transcribe it, ingest it manually. Loomi should just do that. Create the markdown files, sync them straight to your vault.
 
 That's what I'm working on before I open it up.
-
-<a href="/projects/automations/loomi-extraction-pipeline" style="display:inline-block;border:1px solid #fff;padding:6px 16px;font-size:12px;color:#fff;text-decoration:none;font-family:monospace;margin-top:8px">See how the extraction pipeline works →</a>

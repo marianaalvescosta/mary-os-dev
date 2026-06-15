@@ -54,7 +54,7 @@ export default async function ProjectDetail({
             {data.button_link && (
               <Link
                 href={data.button_link}
-                style={{ border: "1px solid #fff", padding: "6px 16px", fontSize: "12px", color: "#fff", textDecoration: "none", whiteSpace: "nowrap", fontFamily: "monospace" }}
+                style={{ border: "1px solid #4ade80", padding: "6px 16px", fontSize: "12px", color: "#4ade80", textDecoration: "none", whiteSpace: "nowrap", fontFamily: "monospace" }}
               >
                 {data.button_label ?? "Learn more"}
               </Link>

@@ -63,10 +63,10 @@ export default async function AutomationDetail({
             <Link
               href={data.product_link}
               style={{
-                border: "1px solid #fff",
+                border: "1px solid #4ade80",
                 padding: "6px 16px",
                 fontSize: "12px",
-                color: "#fff",
+                color: "#4ade80",
                 textDecoration: "none",
                 whiteSpace: "nowrap",
                 fontFamily: "monospace",

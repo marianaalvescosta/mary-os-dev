@@ -10,13 +10,11 @@ interface Automation extends Record<string, unknown> {
 
 export default function AutomationsGrid() {
   const automations = getAllEntries<Automation>("automations") as (Automation & { slug: string })[];
-  const allTags = Array.from(new Set(automations.flatMap((a) => a.tags ?? [])));
-
   return (
     <div style={{ padding: "24px 24px 48px 24px" }}>
 
       {/* Breadcrumb with extending line */}
-      <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "28px" }}>
         <Link
           href="/projects"
           style={{ color: "#fff", fontSize: "13px", textDecoration: "none", whiteSpace: "nowrap" }}
@@ -25,26 +23,6 @@ export default function AutomationsGrid() {
         </Link>
         <div style={{ flex: 1, height: "1px", background: "#333" }} />
       </div>
-
-      {/* Tag chips */}
-      {allTags.length > 0 && (
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "28px" }}>
-          {allTags.map((tag) => (
-            <span
-              key={tag}
-              style={{
-                border: "1px solid #333",
-                padding: "3px 10px",
-                fontSize: "11px",
-                color: "#888",
-                fontFamily: "monospace",
-              }}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      )}
 
       {/* Grid */}
       <div

@@ -67,6 +67,4 @@ The agent returns structured output: Insights · Supporting atoms · Next steps.
 
 n8n · Apify · Gemini (gemini-3-flash-preview) · GPT-4o · Supabase · Lovable · Webhooks
 
----
-
 → [See the full Loomi product](/projects/loomi)

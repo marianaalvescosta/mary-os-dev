@@ -53,6 +53,3 @@ The report goes to Slack. It also gets stored in Airtable so the agent can refer
 
 Reduced manual competitor research time by over 90%. But the bigger win is structural — the client now has a historical record of how competitors have evolved, week by week, that didn't exist before. That's the kind of compound advantage that's hard to build any other way.
 
-## Stack
-
-n8n · Apify · HTTP Requests · Airtable · OpenAI · Slack · Perplexity

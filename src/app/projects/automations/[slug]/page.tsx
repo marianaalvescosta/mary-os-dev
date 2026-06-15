@@ -78,7 +78,11 @@ export default async function AutomationDetail({
         </div>
 
         {/* Body */}
+        <style>{`
+          .automation-body img { margin: 24px 0; display: block; }
+        `}</style>
         <div
+          className="automation-body"
           style={{ color: "#fff", lineHeight: "1.8" }}
           dangerouslySetInnerHTML={{ __html: html }}
         />

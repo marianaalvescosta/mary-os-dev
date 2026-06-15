@@ -8,12 +8,14 @@ order: 1
 deck: "/loomi-deck.html"
 ---
 
-I built Loomi because I have the problem it solves.
+I consume a lot of social media content about business, productivity, tech, finance — the kind of stuff I actually want to use in my business. I always save everything and I never come back to it - when I actually needed something, I couldn't find it. Was it on my camera roll? TikTok? Instagram? YouTube? I'd spend way too long looking and still come up empty.
 
-I consume constantly — YouTube, TikTok, LinkedIn, courses. I save things and never come back to them. The knowledge disappears into whatever app I saved it in. It doesn't compound.
+One day, while backpacking through South America with friends I had asthma issues with the altitude and couldn't keep up so I came back to where we were staying and thought: okay, what do I do now? Opened my laptop and started building Loomi.
 
-Loomi fixes that. You paste a saved post URL, it extracts what's actually useful, structures it into a knowledge format, and lets you chat with your accumulated library. Obsidian sync is built in — your knowledge lives where you already work.
+I kept going when I had time and when I got home in December I locked myself in my room — staying up, sleeping an hour, waking up to open a Claude session and think through whatever idea had just hit me, going back to sleep. Two weeks in I had the first version on Lovable and N8N. Very rough, but it worked. Started using it myself and showed it to a few friends.
 
-The MVP is live, built in Lovable. The rebuild — Next.js + Supabase + Claude — is the current project.
+Since then I've been rebuilding it properly with Claude Code — learning about security, going deep on how apps are actually built. It works. I just don't think it's ready to go live yet.
 
-This one is mine. Not a client build, not a side experiment. The thing I'm building toward.
+The current thing I'm adding is an Obsidian integration. I use my Obsidian second brain for everything — it's honestly one of the greatest things I've ever built for myself. And it makes so much sense to connect the two. Right now getting social media content into Obsidian is painful — grab the link, transcribe it, ingest it manually. Loomi should just do that. Create the markdown files, sync them straight to your vault.
+
+That's what I'm working on before I open it up.

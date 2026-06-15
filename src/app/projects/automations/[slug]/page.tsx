@@ -22,14 +22,18 @@ export default async function AutomationDetail({
     const { data, html } = await getEntryWithHtml<Automation>("automations", slug);
     return (
       <div style={{ padding: "32px 40px 48px 24px" }}>
-        <Link
-          href="/projects/automations"
-          style={{ color: "#555", fontSize: "13px", display: "inline-block", marginBottom: "16px" }}
-        >
-          &lt; automations/
-        </Link>
-
-        <div style={{ height: "1px", background: "#fff", marginBottom: "20px" }} />
+        <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
+          <Link
+            href="/projects/automations"
+            style={{ color: "#555", fontSize: "13px", textDecoration: "none", whiteSpace: "nowrap" }}
+          >
+            &lt; automations/
+          </Link>
+          <span style={{ color: "#fff", fontSize: "13px", fontFamily: "monospace" }}>
+            {data.name.toLowerCase()}
+          </span>
+          <div style={{ flex: 1, height: "1px", background: "#333" }} />
+        </div>
 
         {data.tags && data.tags.length > 0 && (
           <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "28px" }}>

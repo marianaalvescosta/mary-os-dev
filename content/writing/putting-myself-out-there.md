@@ -34,3 +34,11 @@ Alongside showing my work, I also wanted to show a little bit of myself and the 
 The copy took weeks. The website itself I built on a weekend, but the copy I was extremely particular about — the way I sounded, the way I was portraying myself.
 
 That's what putting myself out there actually looks like for me at the moment. Not effortless. Not natural. Just deciding that what I want to achieve matters more than the discomfort I'm feeling and, like everything else, I know the more I do it, the less uncomfortable it will feel.
+
+\- Mariana
+
+---
+
+*More from me:*
+- [How I actually learn from social media (instead of just scrolling)](/writing/learning-from-social-media)
+- [How I built my personal website in a weekend with Claude Code](/writing/personal-website-one-weekend)

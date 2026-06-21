@@ -42,4 +42,5 @@ That's what putting myself out there actually looks like for me at the moment. N
 More from me:
 
 [How I actually learn from social media](/writing/learning-from-social-media) — the content that convinced me building in public matters
+
 [How I built my personal website in a weekend with Claude Code](/writing/personal-website-one-weekend) — what building this website actually looked like

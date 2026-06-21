@@ -1,5 +1,5 @@
 ---
-title: "Putting myself out there (when I hate everything about that phrase)"
+title: "Putting myself out there"
 slug: putting-myself-out-there
 date: 2026-06-01
 month: JUN
@@ -7,47 +7,30 @@ year: "2026"
 tag: PERSONAL
 ---
 
-I hate the phrase "putting yourself out there."
+I've always been a private person when it comes to work — in person and online. My private Instagram is full of travel photos and pictures with friends, and I love that. But work? I keep that to myself.
 
-It sounds like something you do to get attention. Performance for an audience. The LinkedIn version of yourself — curated, confident, slightly too polished to be real.
+I don't like being the centre of attention and even though I love to talk about things related to my work/industry, one of the questions I hate answering the most is the famous "what do you do for work?" when I'm meeting someone in my personal life.
+Why? 1. No one ever understands what I truly do. 2. It not only feels performative but people tend to think I'm so much better than what I feel I really am.
 
-I've never been that person. I'm private by nature. I don't share things until they're done. I don't post progress unless it's real progress. I get genuinely uncomfortable watching people build in public in ways that feel more like performing than building.
+For all these reasons, sharing what I do for work feels very uncomfortable to me — online or in real life.
 
-And yet. Here I am. Building a website with my name on it. Writing posts. Trying to figure out how to exist on the internet in a way that doesn't make me cringe.
+The irony is that I consume this kind of content constantly. I spend a bunch of time watching people build things in public — talking through their process, sharing what they're learning, being honest about what's working and what isn't. I love it.
+That's why I built Loomi. I was saving so much of that content, because it is truly so helpful to see others build online and learn from them. I've even tried to do it myself. I just could never get there. Too reserved for that and not there yet.
 
----
+However, this year I wanted to move forward with a goal I've had since I can remember and I couldn't keep being uncomfortable with exposure and expect to reach it. One of the most important things to achieve this goal is being visible and showing the work.
 
-**Why I'm doing it anyway**
+So when I was selected to demo one of my AI agents at AI Innovation Day by Unicorn Factory Lisboa, I knew it was exactly the kind of opportunity that mattered. People around me were excited for me, congratulating me. And my first reaction, honestly, was dread. Not excitement — dread. I didn't want to do it. I was going to do it because it was good for my goal, not because it felt good.
 
-Partly because the US move requires it.
+Which, looking back, is a little ridiculous. It was a great opportunity regardless of any goal. But that's where my head went.
 
-To get an O-1 visa, you have to prove extraordinary ability. That means evidence — work that's visible, documented, with your name on it. You can do extraordinary things in private and no one will believe you if you can't show it.
+I rehearsed all morning with my best friend. I got on stage and was visibly shaking. I finished a slide too early, realized mid-sentence I wasn't done, and had to go back. I got through it. People reacted well — it was a cute moment — but it was still one of the most uncomfortable things I've done.
 
-That's the practical reason. But it's not the real one.
+After, people asked where they could see more of my work. I had nothing to send them.
 
-The real one is that I've been building things mostly alone for four years, and it's getting old. Not the work — I love the work. The being invisible part. Carrying a vision that most people around you don't quite understand and don't quite believe in yet.
+That's when I stopped waiting for it to feel comfortable and started building this website instead. I'd tried before — several times over the years — and always stopped. Something always felt off. Too much like marketing myself, not enough like actually showing anything real. But the work I'm doing now is different. I build things — products, systems, automations — and it turns out showing what you built is a lot easier than talking about what you do. It becomes about the thing, not about you.
 
-Being visible isn't about attention. It's about making it easier for the right people to find you.
+Alongside showing my work, I also wanted to show a little bit of myself and the person behind the work. I really like writing — I find it very relaxing and a great way to put myself out there without being too loud about it. That's why I created the writing tab: I write about work, things I build, things others built that I find incredible, and a little bit about myself and my life.
 
----
+The copy took weeks. The website itself I built on a weekend, but the copy I was extremely particular about — the way I sounded, the way I was portraying myself.
 
-**What I'm still figuring out**
-
-I don't know what my "brand" is and I don't want one. I'm not building toward a content strategy. I'm building toward a company, toward the US, toward becoming technically capable in a way that's real and not just adjacent.
-
-The website exists because having somewhere to put the work matters more than the work being seen.
-
-The posts exist because writing helps me think, and thinking out loud sometimes helps other people too.
-
-If someone reads them, great. If they don't, they're still useful.
-
-That's the version of "putting myself out there" I can actually live with. Not performance. Just showing up, on my own terms, in my own time.
-
-xoxo, Mariana
-
----
-
-*More from me:*
-- [How I built my personal website in a weekend](/writing/personal-website-one-weekend) — what "showing up on my own terms" actually looked like in practice
-- [How I built my second brain with Obsidian and Claude](/writing/second-brain-obsidian-claude) — building something in private that makes the public work possible
-
+That's what putting myself out there actually looks like for me at the moment. Not effortless. Not natural. Just deciding that what I want to achieve matters more than the discomfort I'm feeling and, like everything else, I know the more I do it, the less uncomfortable it will feel.

@@ -18,7 +18,7 @@ export default function WritingPage() {
   );
 
   return (
-    <div style={{ padding: "32px 24px" }}>
+    <div style={{ padding: "32px 24px", width: "100%" }}>
       {/* Header */}
       <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
         <span style={{ color: "#555", fontSize: "12px", whiteSpace: "nowrap" }}>ls writing</span>

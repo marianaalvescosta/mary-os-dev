@@ -23,7 +23,7 @@ export default async function WritingPost({
   try {
     const { data, html } = await getEntryWithHtml<Post>("writing", slug);
     return (
-      <div style={{ padding: "32px 24px", maxWidth: "800px" }}>
+      <div style={{ padding: "32px 24px" }}>
         {/* Back button */}
         <Link
           href="/writing"
@@ -37,10 +37,10 @@ export default async function WritingPost({
 
         {/* Body */}
         <div
+          className="prose"
           style={{
             color: "#fff",
             lineHeight: "1.8",
-            maxWidth: "65ch",
           }}
           dangerouslySetInnerHTML={{ __html: html }}
         />

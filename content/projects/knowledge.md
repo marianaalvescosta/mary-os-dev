@@ -1,11 +1,9 @@
 ---
 slug: knowledge
 name: "knowledge/"
-line1: "Placeholder description line one."
-line2: "Placeholder description line two."
+line1: "The library."
+line2: "Notes, systems, and things worth keeping. Coming soon."
 tags: ["coming soon"]
 order: 4
 comingSoon: true
 ---
-
-Coming soon.

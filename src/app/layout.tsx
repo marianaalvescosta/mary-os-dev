@@ -11,8 +11,23 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mary OS",
-  description: "mariana costa",
+  metadataBase: new URL("https://marianaacosta.com"),
+  title: {
+    default: "Mary OS — Mariana Costa",
+    template: "%s — Mary OS",
+  },
+  description:
+    "Mariana Costa — business ops and AI automation. n8n pipelines, AI agents, and the things I build on the side.",
+  openGraph: {
+    title: "Mary OS — Mariana Costa",
+    description:
+      "Business ops and AI automation. n8n pipelines, AI agents, and the things I build on the side.",
+    images: ["/profile.jpg"],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

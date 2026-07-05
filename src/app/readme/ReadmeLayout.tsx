@@ -39,7 +39,7 @@ function Slot({ cell, crop = true }: { cell: Cell; crop?: boolean }) {
       }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={cell.src} alt={`photo ${cell.n}`} style={img} />
+      <img src={cell.src} alt="" style={img} />
     </div>
   );
 }

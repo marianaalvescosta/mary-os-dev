@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import fs from "fs";
 import path from "path";
+import { getAllEntries } from "@/lib/content";
 
 const fields = [
   { label: "Name:", value: "Mariana Costa" },
@@ -9,20 +10,13 @@ const fields = [
   { label: "Location(s):", value: "Lisbon, pt → Boston, usa", gradient: true },
   { label: "Role:", value: "Ops x AI x Automations" },
   { label: "Languages:", value: "Tech-fluent, not tech-native" },
-  { label: "Stack:", value: "n8n, AI," },
-];
-
-const directories = [
-  { path: "loomi/", desc: "startup", href: "/projects/loomi" },
-  { path: "automations/", desc: "workflow gallery", href: "/projects/automations" },
-  { path: "writing/latest", desc: "most recent", href: "/writing" },
-  { path: "knowledge/", desc: "library · coming soon", href: null },
+  { label: "Stack:", value: "n8n, AI" },
 ];
 
 function Box({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div style={{ border: "1px solid #fff", padding: "16px 20px" }}>
-      <div style={{ color: "#555", fontSize: "11px", marginBottom: "14px", letterSpacing: "0.05em" }}>
+      <div style={{ color: "#777", fontSize: "11px", marginBottom: "14px", letterSpacing: "0.05em" }}>
         {label}
       </div>
       {children}
@@ -40,8 +34,8 @@ function Field({
   gradient?: boolean;
 }) {
   return (
-    <div style={{ display: "flex", gap: "12px", marginBottom: "8px", alignItems: "baseline" }}>
-      <span style={{ color: "#555", minWidth: "110px", flexShrink: 0 }}>{label}</span>
+    <div style={{ display: "flex", gap: "12px", marginBottom: "8px", alignItems: "baseline", flexWrap: "wrap" }}>
+      <span style={{ color: "#777", minWidth: "110px", flexShrink: 0 }}>{label}</span>
       <span
         style={
           gradient
@@ -63,13 +57,27 @@ export default function LandingPage() {
   const photoPath = path.join(process.cwd(), "public", "profile.jpg");
   const hasPhoto = fs.existsSync(photoPath);
 
+  const latestPost = getAllEntries<{ date: string }>("writing").sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  )[0];
+
+  const directories = [
+    { path: "loomi/", desc: "startup", href: "/projects/loomi" },
+    { path: "automations/", desc: "workflow gallery", href: "/projects/automations" },
+    {
+      path: "writing/latest",
+      desc: "most recent",
+      href: latestPost ? `/writing/${latestPost.slug}` : "/writing",
+    },
+    { path: "knowledge/", desc: "library · coming soon", href: null },
+  ];
+
   return (
-    <div style={{ display: "flex", flexDirection: "row", alignItems: "stretch", gap: "20px", padding: "20px 24px" }}>
+    <div className="flex flex-col md:flex-row md:items-stretch gap-5 p-5 md:px-6">
       {/* Left — photo with frame */}
       <div
+        className="w-full md:w-[42%] shrink-0"
         style={{
-          flexShrink: 0,
-          width: "42%",
           border: "1px solid #fff",
           position: "relative",
           minHeight: "400px",
@@ -81,6 +89,8 @@ export default function LandingPage() {
             src="/profile.jpg"
             alt="Mariana Costa"
             fill
+            priority
+            sizes="(max-width: 768px) 100vw, 42vw"
             style={{ objectFit: "cover", objectPosition: "center center" }}
           />
         ) : (
@@ -110,6 +120,7 @@ export default function LandingPage() {
           display: "flex",
           flexDirection: "column",
           gap: "16px",
+          minWidth: 0,
         }}
       >
         {/* Box 1 — MARIANA.EXE */}
@@ -140,12 +151,13 @@ export default function LandingPage() {
                   marginBottom: "8px",
                   color: "#fff",
                   alignItems: "baseline",
+                  flexWrap: "wrap",
                 }}
               >
                 <span>
                   <span className="dir-arrow">&gt;</span> {dir.path}
                 </span>
-                <span style={{ color: "#555" }}>{dir.desc}</span>
+                <span style={{ color: "#777" }}>{dir.desc}</span>
               </Link>
             ) : (
               <div
@@ -154,8 +166,9 @@ export default function LandingPage() {
                   display: "flex",
                   gap: "16px",
                   marginBottom: "8px",
-                  color: "#555",
+                  color: "#777",
                   alignItems: "baseline",
+                  flexWrap: "wrap",
                 }}
               >
                 <span>&gt; {dir.path}</span>
@@ -168,15 +181,15 @@ export default function LandingPage() {
         {/* Box 3 — CONTACT */}
         <Box label="--- CONTACT ---">
           <Field label="EMAIL:">
-            <a href="mailto:marianacosta160@gmail.com">marianacosta160@gmail.com</a>
+            <a href="mailto:hi@marianaacosta.com">hi@marianaacosta.com</a>
           </Field>
           <Field label="LINKEDIN:">
             <a
-              href="https://linkedin.com/in/mariana-costa"
+              href="https://www.linkedin.com/in/mariana-alves-costa-"
               target="_blank"
               rel="noopener noreferrer"
             >
-              → /in/mariana-costa
+              → /in/mariana-alves-costa-
             </a>
           </Field>
         </Box>

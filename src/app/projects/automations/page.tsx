@@ -8,6 +8,11 @@ interface Automation extends Record<string, unknown> {
   tags?: string[];
 }
 
+export const metadata = {
+  title: "automations",
+  description: "Workflow gallery — real n8n automations and AI agents I've built.",
+};
+
 export default function AutomationsGrid() {
   const automations = getAllEntries<Automation>("automations") as (Automation & { slug: string })[];
   return (
@@ -24,14 +29,8 @@ export default function AutomationsGrid() {
         <div style={{ flex: 1, height: "1px", background: "#333" }} />
       </div>
 
-      {/* Grid */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gap: "16px",
-        }}
-      >
+      {/* Grid, single column on phones */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {automations.map((automation) => (
           <Link
             key={automation.slug}
@@ -39,6 +38,7 @@ export default function AutomationsGrid() {
             style={{ textDecoration: "none" }}
           >
             <div
+              className="hover-card"
               style={{
                 border: "1px solid #222",
                 background: "#0a0a0a",

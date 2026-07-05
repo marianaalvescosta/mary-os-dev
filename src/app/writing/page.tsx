@@ -12,6 +12,11 @@ interface Post {
   placeholder?: boolean;
 }
 
+export const metadata = {
+  title: "writing",
+  description: "Posts about AI workflows, second brains, and building in public.",
+};
+
 export default function WritingPage() {
   const posts = getAllEntries<Post>("writing").sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -21,7 +26,7 @@ export default function WritingPage() {
     <div style={{ padding: "32px 24px", width: "100%" }}>
       {/* Header */}
       <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
-        <span style={{ color: "#555", fontSize: "12px", whiteSpace: "nowrap" }}>ls writing</span>
+        <span style={{ color: "#777", fontSize: "12px", whiteSpace: "nowrap" }}>ls writing</span>
         <div style={{ flex: 1, height: "1px", background: "#fff" }} />
       </div>
 
@@ -31,6 +36,7 @@ export default function WritingPage() {
           <Link
             key={post.slug}
             href={post.placeholder ? "#" : `/writing/${post.slug}`}
+            className="hover-row"
             style={{
               display: "grid",
               gridTemplateColumns: "80px 1fr 80px",
@@ -42,7 +48,7 @@ export default function WritingPage() {
             }}
           >
             {/* Date */}
-            <span style={{ color: "#555", fontSize: "11px" }}>
+            <span style={{ color: "#777", fontSize: "11px" }}>
               <span style={{ display: "block" }}>{post.month}</span>
               <span style={{ display: "block" }}>{post.year}</span>
             </span>
@@ -51,7 +57,7 @@ export default function WritingPage() {
             <span
               style={{
                 fontWeight: "bold",
-                color: post.placeholder ? "#555" : "#fff",
+                color: post.placeholder ? "#777" : "#fff",
               }}
             >
               {post.title}
@@ -60,7 +66,7 @@ export default function WritingPage() {
             {/* Tag */}
             <span
               style={{
-                color: "#555",
+                color: "#777",
                 fontSize: "11px",
                 textAlign: "right",
                 textTransform: "uppercase",

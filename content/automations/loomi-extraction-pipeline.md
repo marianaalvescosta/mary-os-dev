@@ -61,7 +61,7 @@ The agent returns structured output: Insights · Supporting atoms · Next steps.
     <img src="/automations/loomi-chat-agent.png" alt="Loomi chat agent pipeline" style="width:100%;height:auto;display:block" />
   </div>
   <div style="flex:1;overflow:hidden">
-    <img src="/automations/loomi-chat-agent-screenshot.gif" alt="Loomi chat agent in use" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block" />
+    <img src="/automations/loomi-chat-agent-screenshot.webp" alt="Loomi chat agent in use" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block" />
   </div>
 </div>
 

@@ -17,7 +17,7 @@ const statusItems = [
   { done: true,  label: "demoed Competitors' Research AI Agent at Unicorn Factory Innovation Day" },
   { done: false, label: "finish Harvard CS50" },
   { done: false, label: "ship Loomi v1" },
-  { done: false, label: "Incorporate — turn freelance into a scalable business" },
+  { done: false, label: "incorporate — turn freelance into a scalable business" },
   { done: false, label: "get the O-1 visa" },
   { done: false, label: "move to boston", gradient: true },
 ];
@@ -26,7 +26,7 @@ function SectionHeading({ prefix, label }: { prefix: string; label: string }) {
   return (
     <div style={{ marginBottom: "16px" }}>
       <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "10px" }}>
-        <span style={{ color: "#555" }}>{prefix}</span>
+        <span style={{ color: "#777" }}>{prefix}</span>
         <span style={{ color: "#fff", fontWeight: "bold" }}>{label}</span>
       </div>
       <div style={{ height: "1px", background: "#fff" }} />
@@ -80,13 +80,18 @@ async function getData() {
   return { columns, hero };
 }
 
+export const metadata = {
+  title: "readme",
+  description: "About Mariana Costa — freelance ops, AI automation, and what's next.",
+};
+
 export default async function ReadmePage() {
   const { columns, hero } = await getData();
   return (
     <ReadmeLayout columns={columns} hero={hero}>
       {/* # mariana-costa */}
         <div style={{ marginBottom: "24px" }}>
-          <span style={{ color: "#555", fontSize: "18px" }}># </span>
+          <span style={{ color: "#777", fontSize: "18px" }}># </span>
           <span style={{ color: "#fff", fontWeight: "bold", fontSize: "18px" }}>mariana-costa</span>
         </div>
 
@@ -180,7 +185,7 @@ export default async function ReadmePage() {
                   alignItems: "baseline",
                 }}
               >
-                <span style={{ color: item.done ? "#4ade80" : "#555", flexShrink: 0, fontWeight: "bold" }}>
+                <span style={{ color: item.done ? "#4ade80" : "#777", flexShrink: 0, fontWeight: "bold" }}>
                   {item.done ? "[x]" : "[ ]"}
                 </span>
                 <span
@@ -207,10 +212,10 @@ export default async function ReadmePage() {
         {/* ## contact */}
         <section>
           <SectionHeading prefix="##" label=" contact" />
-          <p style={{ color: "#555", margin: "16px 0 0 0" }}>
+          <p style={{ color: "#777", margin: "16px 0 0 0" }}>
             EMAIL:{" "}
-            <a href="mailto:marianacosta160@gmail.com" style={{ color: "#fff" }}>
-              marianacosta160@gmail.com
+            <a href="mailto:hi@marianaacosta.com" style={{ color: "#fff" }}>
+              hi@marianaacosta.com
             </a>
           </p>
         </section>

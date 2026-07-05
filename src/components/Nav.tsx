@@ -14,10 +14,9 @@ export default function Nav() {
 
   return (
     <nav
+      className="grid grid-cols-2 md:grid-cols-4"
       style={{
         borderBottom: "1px solid #fff",
-        display: "grid",
-        gridTemplateColumns: "repeat(4, 1fr)",
         flexShrink: 0,
       }}
     >
@@ -32,7 +31,7 @@ export default function Nav() {
               display: "block",
               padding: "12px 0",
               textAlign: "center",
-              color: active ? "#fff" : "#555",
+              color: active ? "#fff" : "#777",
               borderBottom: active ? "2px solid #fff" : "2px solid transparent",
               marginBottom: "-1px",
               fontSize: "13px",

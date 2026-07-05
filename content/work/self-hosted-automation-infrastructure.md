@@ -1,11 +1,11 @@
 ---
 slug: self-hosted-automation-infrastructure
-title: "Self-Hosted Automation Infrastructure"
-role: "n8n · Tailscale · VPS · Linux server admin"
+title: "Self-Hosted OpenClaw"
+role: "OpenClaw · VPS · Tailscale · Claude · ChatGPT"
 yearTop: "Feb 2026"
 yearBot: "Infrastructure"
-tags: ["n8n", "VPS", "Linux"]
+tags: ["OpenClaw", "VPS", "Tailscale", "Claude", "ChatGPT"]
 order: 80
 ---
 
-Set up a production automation server on a dedicated VPS with Tailscale for encrypted remote access — accessible without exposing server ports to the internet. A non-obvious architectural decision that most self-hosted setups get wrong.
+I wanted to run an AI agent gateway (OpenClaw) as a personal assistant, so I set up my own VPS to self-host it. I kept the agent process alive through systemd so it survives restarts and idle logouts, and used Tailscale for encrypted remote access instead of exposing the server's SSH port to the internet. Once it was running, I had the agent build me a personal Mission Control dashboard — a single-file app to track my goals, projects, and daily tasks, with a kanban board, a timeline for longer-term plans, and notes, all saved locally. Setting the server up itself took real troubleshooting — getting a global npm install onto the system PATH, working through OAuth for model access, navigating the environment.

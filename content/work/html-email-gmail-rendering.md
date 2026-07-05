@@ -1,11 +1,11 @@
 ---
 slug: html-email-gmail-rendering
-title: "HTML Email Production — Gmail Rendering Constraints"
-role: "HTML Email · CSS (inline) · Gmail rendering model"
+title: "HTML Email Campaigns"
+role: "HTML Email · CSS (inline) · n8n"
 yearTop: "Jun 2026"
 yearBot: "Frontend / Email"
-tags: ["HTML Email", "CSS", "Gmail"]
+tags: ["HTML", "CSS", "Gmail", "n8n"]
 order: 10
 ---
 
-Built production HTML emails for a client who needed sequences going out reliably. Handled the usual Gmail quirks that break most HTML emails — CSS variables not supported, base64 image truncation, absolute positioning getting stripped — so the emails render the same everywhere they land.
+Built HTML email campaigns for a client's target market — from ready-to-send templates to the n8n workflow that sent them out. Most of the work was making sure the emails actually looked right on the recipient's end, since there are a few rendering quirks to account for: videos and animations don't play in most inboxes, base64 images can get truncated. Straightforward task, but easy to get wrong if you don't know the constraints going in.

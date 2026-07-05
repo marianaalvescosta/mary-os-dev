@@ -1,11 +1,15 @@
 ---
 slug: interactive-system-architecture-diagram
-title: "Interactive System Architecture Diagram"
-role: "Mermaid.js · HTML · Systems architecture"
+title: "System Design & Process Mapping"
+role: "Mermaid.js · HTML · Figma · n8n · Make · Zapier · Claude"
 yearTop: "May 2026"
 yearBot: "System Design"
-tags: ["Mermaid.js", "HTML", "Systems Design"]
+tags: ["Mermaid.js", "HTML", "Figma", "n8n", "Make", "Zapier", "Claude"]
 order: 60
 ---
 
-Spent hours mapping a tangled multi-system workflow by hand on a physical whiteboard — the only person who understood how the pieces connected was leaving, and the architecture existed nowhere except in someone's head. Digitized the whiteboard sketch into a color-coded, interactive HTML diagram covering the full path from lead acquisition to fulfillment. Became the reference used for migration planning and onboarding.
+During onboarding, I found the client already had a huge number of existing automations running their whole process, with no documentation — which made the process hard for anyone to understand and turned troubleshooting into a much longer task than it should have been.
+
+To make it easier for the team, I went through everything: information from previous calls, notes I'd gathered while debugging, and worked through the full flow end to end until I understood the goal behind each piece.
+I mapped it all out in Mermaid.js and HTML first, then again in a Figma board to share with the team, including the link of each workflow, for easier and quicker troubleshooting when needed.
+From there, I did system design work to close the gaps and simplify the process, cutting the automation count down significantly.

@@ -1,10 +1,10 @@
 ---
 slug: form-file-extraction-pipeline
 title: "Form-to-Storage File Extraction Pipeline"
-role: "n8n · Form API · Cloud Storage API · Custom webhook"
+role: "n8n · Cognito Forms · Google Drive API · Monday.com"
 yearTop: "Jun 2026"
-yearBot: "API Integration"
-tags: ["n8n", "API Integration", "Webhooks"]
+yearBot: "Automation"
+tags: ["n8n", "Cognito Forms", "Google Drive API", "Monday.com"]
 order: 40
 ---
 

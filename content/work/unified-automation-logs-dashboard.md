@@ -1,11 +1,11 @@
 ---
 slug: unified-automation-logs-dashboard
-title: "Unified Automation Logs Dashboard"
-role: "React · Automation platform APIs · Webhook design"
+title: "Automation Logs Dashboard"
+role: "React · Make · Zapier · n8n"
 yearTop: "May 2026"
-yearBot: "Tooling / React"
-tags: ["React", "Webhooks", "API Integration"]
+yearBot: "Ops"
+tags: ["React", "Make", "Zapier", "n8n"]
 order: 70
 ---
 
-A business's automation stack ran across three separate platforms, each with its own isolated logs — debugging a failure meant three dashboards and manual timestamp cross-referencing. Built a React prototype unifying all three into one searchable interface, and found that one platform's public API doesn't expose run history at all — designed a webhook-collector pattern as an original workaround, since no off-the-shelf tool solves that gap.
+Automations were spread across three platforms — Make, Zapier, and n8n — each with its own separate logs. When something broke, there was no single place to check what happened. I built a dashboard that pulled logs from all three into one place, so I could search by name or input and see which automation failed or didn't finish, instead of checking each platform separately.

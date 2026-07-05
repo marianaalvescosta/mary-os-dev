@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { getAllEntries } from "@/lib/content";
+import { getSlugs, getEntry } from "@/lib/content";
 
 interface WorkEntry {
   [key: string]: unknown;
@@ -13,9 +12,17 @@ interface WorkEntry {
 }
 
 export default function WorkPage() {
-  const entries = getAllEntries<WorkEntry>("work").sort(
-    (a, b) => a.order - b.order
-  );
+  const entries = getSlugs("work")
+    .map((slug) => {
+      const { data, content } = getEntry<WorkEntry>("work", slug);
+      const summary = content
+        .split("\n")
+        .filter((line) => !line.trim().startsWith("→"))
+        .join(" ")
+        .trim();
+      return { ...data, slug, summary };
+    })
+    .sort((a, b) => a.order - b.order);
 
   const footerNote = entries.find((e) => e.footerNote)?.footerNote;
 
@@ -27,14 +34,26 @@ export default function WorkPage() {
           ls work contributions
         </span>
         <div style={{ flex: 1, height: "1px", background: "#fff" }} />
+        <a
+          href="/cv.pdf"
+          download
+          style={{
+            color: "#22c55e",
+            fontSize: "12px",
+            whiteSpace: "nowrap",
+            border: "1px solid #22c55e",
+            padding: "4px 10px",
+          }}
+        >
+          Download CV
+        </a>
       </div>
 
       {/* Cards */}
       <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
         {entries.map((entry) => (
-          <Link
+          <div
             key={entry.slug}
-            href={`/work/${entry.slug}`}
             style={{ display: "block", border: "1px solid #fff", padding: "16px 20px" }}
           >
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
@@ -49,7 +68,10 @@ export default function WorkPage() {
                 <p style={{ margin: 0 }}>{entry.yearBot}</p>
               </div>
             </div>
-          </Link>
+            <p style={{ color: "#999", fontSize: "13px", lineHeight: "1.6", margin: "12px 0 0 0" }}>
+              {entry.summary}
+            </p>
+          </div>
         ))}
       </div>
 

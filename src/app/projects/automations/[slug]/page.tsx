@@ -1,14 +1,7 @@
 import Link from "next/link";
-import { getSlugs, getEntryWithHtml } from "@/lib/content";
+import { getSlugs, getEntryWithHtml, type Automation } from "@/lib/content";
 import { notFound } from "next/navigation";
-
-interface Automation extends Record<string, unknown> {
-  name: string;
-  description?: string;
-  tags?: string[];
-  product_link?: string;
-  product_label?: string;
-}
+import Tag from "@/components/Tag";
 
 export async function generateStaticParams() {
   return getSlugs("automations").map((slug) => ({ slug }));
@@ -34,52 +27,34 @@ export default async function AutomationDetail({
   if (!getSlugs("automations").includes(slug)) notFound();
   const { data, html } = await getEntryWithHtml<Automation>("automations", slug);
   return (
-    <div style={{ padding: "32px 40px 48px 24px" }}>
-
+    <div className="pl-6 pr-10 pt-8 pb-12">
       {/* Breadcrumb */}
-      <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "28px", flexWrap: "wrap" }}>
+      <div className="flex items-center gap-3 mb-7 flex-wrap">
         <Link
           href="/projects/automations"
-          style={{ color: "#777", fontSize: "13px", textDecoration: "none", whiteSpace: "nowrap" }}
+          className="text-dim text-[13px] whitespace-nowrap"
         >
           &lt; automations/
         </Link>
-        <span style={{ color: "#fff", fontSize: "13px" }}>
-          {data.name.toLowerCase()}
-        </span>
-        <div style={{ flex: 1, height: "1px", background: "#333" }} />
+        <span className="text-white text-[13px]">{data.name.toLowerCase()}</span>
+        <div className="flex-1 h-px bg-line" />
       </div>
 
       {/* Stack + button row */}
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px", marginBottom: "36px" }}>
+      <div className="flex items-center justify-between flex-wrap gap-3 mb-9">
         {data.tags && data.tags.length > 0 && (
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+          <div className="flex flex-wrap gap-1.5">
             {data.tags.map((tag) => (
-              <span
-                key={tag}
-                style={{
-                  border: "1px solid #333",
-                  padding: "2px 8px",
-                  fontSize: "11px",
-                  color: "#999",
-                }}
-              >
+              <Tag key={tag} muted>
                 {tag}
-              </span>
+              </Tag>
             ))}
           </div>
         )}
         {data.product_link && (
           <Link
             href={data.product_link}
-            style={{
-              border: "1px solid #4ade80",
-              padding: "6px 16px",
-              fontSize: "12px",
-              color: "#4ade80",
-              textDecoration: "none",
-              whiteSpace: "nowrap",
-            }}
+            className="border border-accent text-accent px-4 py-1.5 text-xs whitespace-nowrap"
           >
             {data.product_label ?? "See product"}
           </Link>
@@ -87,12 +62,8 @@ export default async function AutomationDetail({
       </div>
 
       {/* Body */}
-      <style>{`
-        .automation-body img { margin: 24px 0; display: block; width: 100%; }
-      `}</style>
       <div
-        className="automation-body"
-        style={{ color: "#fff", lineHeight: "1.8" }}
+        className="automation-body text-white leading-[1.8]"
         dangerouslySetInnerHTML={{ __html: html }}
       />
     </div>

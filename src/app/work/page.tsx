@@ -1,16 +1,6 @@
 import Link from "next/link";
-import { getSlugs, getEntry } from "@/lib/content";
-
-interface WorkEntry {
-  [key: string]: unknown;
-  slug: string;
-  title: string;
-  role: string;
-  yearTop: string;
-  yearBot: string;
-  order: number;
-  footerNote?: string;
-}
+import { getSlugs, getEntry, type WorkEntry } from "@/lib/content";
+import PageHeader from "@/components/PageHeader";
 
 export const metadata = {
   title: "work",
@@ -40,58 +30,41 @@ export default function WorkPage() {
   const footerNote = entries.find((e) => e.footerNote)?.footerNote;
 
   return (
-    <div style={{ padding: "32px 24px" }}>
-      {/* Header */}
-      <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
-        <span style={{ color: "#777", fontSize: "12px", whiteSpace: "nowrap" }}>
-          ls work contributions
-        </span>
-        <div style={{ flex: 1, height: "1px", background: "#fff" }} />
-        <a
-          href="/cv.pdf"
-          download
-          style={{
-            color: "#4ade80",
-            fontSize: "12px",
-            whiteSpace: "nowrap",
-            border: "1px solid #4ade80",
-            padding: "4px 10px",
-          }}
-        >
-          Download CV
-        </a>
-      </div>
+    <div className="px-6 py-8">
+      <PageHeader
+        label="ls work contributions"
+        right={
+          <a
+            href="/cv.pdf"
+            download
+            className="text-accent text-xs whitespace-nowrap border border-accent px-2.5 py-1"
+          >
+            Download CV
+          </a>
+        }
+      />
 
       {/* Cards */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      <div className="flex flex-col gap-4">
         {entries.map((entry) => (
-          <div
-            key={entry.slug}
-            style={{ display: "block", border: "1px solid #fff", padding: "16px 20px" }}
-          >
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+          <div key={entry.slug} className="border border-white px-5 py-4">
+            <div className="flex justify-between items-start">
               <div>
-                <p style={{ fontWeight: "bold", color: "#fff", margin: "0 0 4px 0" }}>
-                  {entry.title}
-                </p>
-                <p style={{ color: "#777", margin: 0, fontSize: "12px" }}>{entry.role}</p>
+                <p className="font-bold text-white mb-1">{entry.title}</p>
+                <p className="text-dim text-xs">{entry.role}</p>
               </div>
-              <div style={{ textAlign: "right", color: "#fff", fontSize: "12px", flexShrink: 0, marginLeft: "24px" }}>
-                <p style={{ margin: 0 }}>{entry.yearTop}</p>
-                <p style={{ margin: 0, color: "#777" }}>{entry.yearBot}</p>
+              <div className="text-right text-xs shrink-0 ml-6">
+                <p className="text-white">{entry.yearTop}</p>
+                <p className="text-dim">{entry.yearBot}</p>
               </div>
             </div>
-            <p style={{ color: "#999", fontSize: "13px", lineHeight: "1.6", margin: "12px 0 0 0" }}>
+            <p className="text-faint text-[13px] leading-relaxed mt-3">
               {entry.summary}
             </p>
             {entry.links.length > 0 && (
-              <div style={{ marginTop: "10px", display: "flex", flexWrap: "wrap", gap: "16px" }}>
+              <div className="mt-2.5 flex flex-wrap gap-4">
                 {entry.links.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    style={{ color: "#4ade80", fontSize: "12px" }}
-                  >
+                  <Link key={link.href} href={link.href} className="text-accent text-xs">
                     → {link.label}
                   </Link>
                 ))}
@@ -103,9 +76,7 @@ export default function WorkPage() {
 
       {/* Footer note */}
       {footerNote && (
-        <p style={{ color: "#777", fontSize: "11px", marginTop: "24px" }}>
-          → {footerNote}
-        </p>
+        <p className="text-dim text-[11px] mt-6">→ {footerNote}</p>
       )}
     </div>
   );

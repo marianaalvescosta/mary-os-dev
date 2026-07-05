@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import fs from "fs";
 import path from "path";
-import { getAllEntries } from "@/lib/content";
+import { getAllEntries, type Post } from "@/lib/content";
 
 const fields = [
   { label: "Name:", value: "Mariana Costa" },
@@ -15,10 +15,8 @@ const fields = [
 
 function Box({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div style={{ border: "1px solid #fff", padding: "16px 20px" }}>
-      <div style={{ color: "#777", fontSize: "11px", marginBottom: "14px", letterSpacing: "0.05em" }}>
-        {label}
-      </div>
+    <div className="border border-white px-5 py-4">
+      <div className="text-dim text-[11px] mb-3.5 tracking-[0.05em]">{label}</div>
       {children}
     </div>
   );
@@ -34,21 +32,9 @@ function Field({
   gradient?: boolean;
 }) {
   return (
-    <div style={{ display: "flex", gap: "12px", marginBottom: "8px", alignItems: "baseline", flexWrap: "wrap" }}>
-      <span style={{ color: "#777", minWidth: "110px", flexShrink: 0 }}>{label}</span>
-      <span
-        style={
-          gradient
-            ? {
-                background: "linear-gradient(90deg, #ffffff 0%, #888888 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }
-            : { color: "#fff" }
-        }
-      >
-        {children}
-      </span>
+    <div className="flex gap-3 mb-2 items-baseline flex-wrap">
+      <span className="text-dim min-w-[110px] shrink-0">{label}</span>
+      <span className={gradient ? "text-gradient" : "text-white"}>{children}</span>
     </div>
   );
 }
@@ -57,7 +43,7 @@ export default function LandingPage() {
   const photoPath = path.join(process.cwd(), "public", "profile.jpg");
   const hasPhoto = fs.existsSync(photoPath);
 
-  const latestPost = getAllEntries<{ date: string }>("writing").sort(
+  const latestPost = getAllEntries<Post>("writing").sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   )[0];
 
@@ -75,15 +61,7 @@ export default function LandingPage() {
   return (
     <div className="flex flex-col md:flex-row md:items-stretch gap-5 p-5 md:px-6">
       {/* Left — photo with frame */}
-      <div
-        className="w-full md:w-[42%] shrink-0"
-        style={{
-          border: "1px solid #fff",
-          position: "relative",
-          minHeight: "400px",
-          overflow: "hidden",
-        }}
-      >
+      <div className="w-full md:w-[42%] shrink-0 border border-white relative min-h-[400px] overflow-hidden">
         {hasPhoto ? (
           <Image
             src="/profile.jpg"
@@ -91,38 +69,18 @@ export default function LandingPage() {
             fill
             priority
             sizes="(max-width: 768px) 100vw, 42vw"
-            style={{ objectFit: "cover", objectPosition: "center center" }}
+            className="object-cover object-center"
           />
         ) : (
-          <div
-            style={{
-              width: "100%",
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "#333",
-              gap: "8px",
-              minHeight: "500px",
-            }}
-          >
-            <span style={{ fontSize: "24px" }}>[ photo ]</span>
-            <span style={{ fontSize: "10px", color: "#2a2a2a" }}>add public/profile.jpg</span>
+          <div className="w-full h-full min-h-[500px] flex flex-col items-center justify-center gap-2 text-line">
+            <span className="text-2xl">[ photo ]</span>
+            <span className="text-[10px] text-[#2a2a2a]">add public/profile.jpg</span>
           </div>
         )}
       </div>
 
       {/* Right — terminal boxes */}
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          gap: "16px",
-          minWidth: 0,
-        }}
-      >
+      <div className="flex-1 flex flex-col gap-4 min-w-0">
         {/* Box 1 — MARIANA.EXE */}
         <Box label="--- MARIANA.EXE ---">
           {fields.map((f) => (
@@ -131,9 +89,7 @@ export default function LandingPage() {
             </Field>
           ))}
           <Field label="Status:">
-            <span style={{ color: "#4ade80" }} className="cursor-blink">
-              Building...
-            </span>
+            <span className="text-accent cursor-blink">Building...</span>
           </Field>
         </Box>
 
@@ -144,32 +100,17 @@ export default function LandingPage() {
               <Link
                 key={dir.path}
                 href={dir.href}
-                className="dir-row"
-                style={{
-                  display: "flex",
-                  gap: "16px",
-                  marginBottom: "8px",
-                  color: "#fff",
-                  alignItems: "baseline",
-                  flexWrap: "wrap",
-                }}
+                className="dir-row flex gap-4 mb-2 text-white items-baseline flex-wrap"
               >
                 <span>
                   <span className="dir-arrow">&gt;</span> {dir.path}
                 </span>
-                <span style={{ color: "#777" }}>{dir.desc}</span>
+                <span className="text-dim">{dir.desc}</span>
               </Link>
             ) : (
               <div
                 key={dir.path}
-                style={{
-                  display: "flex",
-                  gap: "16px",
-                  marginBottom: "8px",
-                  color: "#777",
-                  alignItems: "baseline",
-                  flexWrap: "wrap",
-                }}
+                className="flex gap-4 mb-2 text-dim items-baseline flex-wrap"
               >
                 <span>&gt; {dir.path}</span>
                 <span>{dir.desc}</span>

@@ -33,23 +33,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={mono.variable}>
-      <body
-        style={{
-          fontFamily: "var(--font-mono), monospace",
-          background: "#000",
-          color: "#fff",
-          margin: 0,
-          padding: 0,
-          minHeight: "100vh",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
+      <body className="font-mono bg-black text-white min-h-screen flex flex-col">
         <TitleBar />
         <Nav />
-        <main style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-          {children}
-        </main>
+        <main className="flex-1 flex flex-col">{children}</main>
       </body>
     </html>
   );

@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+@theme {
+  /* Site palette — use as text-dim, border-line, bg-panel, text-accent, etc. */
+  --color-dim: #777777;
+  --color-faint: #999999;
+  --color-accent: #4ade80;
+  --color-line: #333333;
+  --color-panel: #0a0a0a;
+}
+
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
@@ -26,6 +35,13 @@ a {
 
 ::selection {
   background: #ffffff22;
+}
+
+/* White→gray gradient text (location, "move to boston") */
+.text-gradient {
+  background: linear-gradient(90deg, #ffffff 0%, #888888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Blinking cursor after "Building..." */
@@ -70,3 +86,10 @@ a {
 .prose li  { margin-bottom: 6px; }
 .prose a   { color: #4ade80 !important; }
 .prose a:hover { text-decoration: underline; }
+
+/* Images inside automation write-ups */
+.automation-body img {
+  margin: 24px 0;
+  display: block;
+  width: 100%;
+}

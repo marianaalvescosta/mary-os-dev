@@ -1,12 +1,5 @@
 import Link from "next/link";
-import { getAllEntries } from "@/lib/content";
-
-interface Automation extends Record<string, unknown> {
-  name: string;
-  description?: string;
-  cover?: string;
-  tags?: string[];
-}
+import { getAllEntries, type Automation } from "@/lib/content";
 
 export const metadata = {
   title: "automations",
@@ -14,74 +7,36 @@ export const metadata = {
 };
 
 export default function AutomationsGrid() {
-  const automations = getAllEntries<Automation>("automations") as (Automation & { slug: string })[];
+  const automations = getAllEntries<Automation>("automations");
   return (
-    <div style={{ padding: "24px 24px 48px 24px" }}>
-
+    <div className="px-6 pt-6 pb-12">
       {/* Breadcrumb with extending line */}
-      <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "28px" }}>
-        <Link
-          href="/projects"
-          style={{ color: "#fff", fontSize: "13px", textDecoration: "none", whiteSpace: "nowrap" }}
-        >
+      <div className="flex items-center gap-3 mb-7">
+        <Link href="/projects" className="text-white text-[13px] whitespace-nowrap">
           &lt; automations
         </Link>
-        <div style={{ flex: 1, height: "1px", background: "#333" }} />
+        <div className="flex-1 h-px bg-line" />
       </div>
 
       {/* Grid, single column on phones */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {automations.map((automation) => (
-          <Link
-            key={automation.slug}
-            href={`/projects/automations/${automation.slug}`}
-            style={{ textDecoration: "none" }}
-          >
-            <div
-              className="hover-card"
-              style={{
-                border: "1px solid #222",
-                background: "#0a0a0a",
-                cursor: "pointer",
-              }}
-            >
+          <Link key={automation.slug} href={`/projects/automations/${automation.slug}`}>
+            <div className="hover-card border border-[#222] bg-panel cursor-pointer">
               {automation.cover ? (
+                // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={automation.cover}
                   alt={automation.name}
-                  style={{ width: "100%", height: "220px", objectFit: "cover", display: "block" }}
+                  className="w-full h-[220px] object-cover block"
                 />
               ) : (
-                <div
-                  style={{
-                    width: "100%",
-                    height: "220px",
-                    background: "#111",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "#333",
-                    fontSize: "12px",
-                  }}
-                >
+                <div className="w-full h-[220px] bg-[#111] flex items-center justify-center text-line text-xs">
                   [ screenshot ]
                 </div>
               )}
-              <div
-                style={{
-                  padding: "10px 12px",
-                  borderTop: "1px solid #222",
-                }}
-              >
-                <span
-                  style={{
-                    color: "#ccc",
-                    fontSize: "12px",
-                    fontFamily: "monospace",
-                  }}
-                >
-                  {automation.name.toLowerCase()}
-                </span>
+              <div className="px-3 py-2.5 border-t border-[#222]">
+                <span className="text-[#ccc] text-xs">{automation.name.toLowerCase()}</span>
               </div>
             </div>
           </Link>

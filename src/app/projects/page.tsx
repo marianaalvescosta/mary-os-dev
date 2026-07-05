@@ -1,16 +1,7 @@
 import Link from "next/link";
-import { getAllEntries } from "@/lib/content";
-
-interface Project {
-  [key: string]: unknown;
-  slug: string;
-  name: string;
-  line1: string;
-  line2: string;
-  tags: string[];
-  order: number;
-  comingSoon?: boolean;
-}
+import { getAllEntries, type Project } from "@/lib/content";
+import PageHeader from "@/components/PageHeader";
+import Tag from "@/components/Tag";
 
 export const metadata = {
   title: "projects",
@@ -23,60 +14,30 @@ export default function ProjectsPage() {
   );
 
   return (
-    <div style={{ padding: "32px 24px" }}>
-      {/* Header */}
-      <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
-        <span style={{ color: "#777", fontSize: "12px", whiteSpace: "nowrap" }}>ls projects</span>
-        <div style={{ flex: 1, height: "1px", background: "#fff" }} />
-      </div>
+    <div className="px-6 py-8">
+      <PageHeader label="ls projects" />
 
       {/* 2x2 grid, single column on phones */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {projects.map((project, i) => {
+        {projects.map((project) => {
           const isComingSoon = project.comingSoon;
           const card = (
             <div
-              className={isComingSoon ? undefined : "hover-card"}
-              style={{
-                padding: "20px",
-                border: "1px solid #fff",
-                opacity: isComingSoon ? 0.35 : 1,
-                cursor: isComingSoon ? "default" : "pointer",
-                height: "100%",
-              }}
+              className={`border border-white p-5 h-full ${
+                isComingSoon ? "opacity-35" : "hover-card cursor-pointer"
+              }`}
             >
-              <p
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "15px",
-                  color: "#fff",
-                  margin: "0 0 8px 0",
-                }}
-              >
-                {project.name}
-              </p>
-              <p style={{ color: "#777", margin: "0 0 4px 0", fontSize: "12px" }}>
-                {project.line1}
-              </p>
+              <p className="font-bold text-[15px] text-white mb-2">{project.name}</p>
+              <p className="text-dim text-xs mb-1">{project.line1}</p>
               {project.line2 && (
-                <p style={{ color: "#777", margin: "0 0 12px 0", fontSize: "12px" }}>
-                  {project.line2}
-                </p>
+                <p className="text-dim text-xs mb-3">{project.line2}</p>
               )}
               {project.tags?.length > 0 && (
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginTop: "12px" }}>
+                <div className="flex flex-wrap gap-1.5 mt-3">
                   {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      style={{
-                        border: "1px solid #fff",
-                        padding: "2px 8px",
-                        fontSize: "11px",
-                        color: isComingSoon ? "#777" : "#fff",
-                      }}
-                    >
+                    <Tag key={tag} dim={isComingSoon}>
                       {tag}
-                    </span>
+                    </Tag>
                   ))}
                 </div>
               )}
@@ -86,7 +47,7 @@ export default function ProjectsPage() {
           return isComingSoon ? (
             <div key={project.slug}>{card}</div>
           ) : (
-            <Link key={project.slug} href={`/projects/${project.slug}`} style={{ display: "block" }}>
+            <Link key={project.slug} href={`/projects/${project.slug}`} className="block">
               {card}
             </Link>
           );

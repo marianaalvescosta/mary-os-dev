@@ -1,14 +1,6 @@
-import Link from "next/link";
-import { getSlugs, getEntryWithHtml } from "@/lib/content";
+import { getSlugs, getEntryWithHtml, type Post } from "@/lib/content";
 import { notFound } from "next/navigation";
-
-interface Post {
-  [key: string]: unknown;
-  title: string;
-  month: string;
-  year: string;
-  tag: string;
-}
+import BackLink from "@/components/BackLink";
 
 export async function generateStaticParams() {
   return getSlugs("writing").map((slug) => ({ slug }));
@@ -34,33 +26,18 @@ export default async function WritingPost({
   if (!getSlugs("writing").includes(slug)) notFound();
   const { data, html } = await getEntryWithHtml<Post>("writing", slug);
   return (
-    <div style={{ padding: "32px 24px" }}>
-      {/* Back button */}
-      <Link
-        href="/writing"
-        style={{ color: "#777", fontSize: "13px", display: "inline-block", marginBottom: "16px" }}
-      >
-        &lt; writing/
-      </Link>
-
-      {/* Divider */}
-      <div style={{ height: "1px", background: "#fff", marginBottom: "28px" }} />
+    <div className="px-6 py-8">
+      <BackLink href="/writing" label="writing/" />
 
       {/* Title + date */}
-      <h1 style={{ color: "#fff", fontSize: "20px", lineHeight: "1.4", margin: "0 0 8px 0" }}>
-        {data.title}
-      </h1>
-      <p style={{ color: "#777", fontSize: "11px", textTransform: "uppercase", margin: "0 0 32px 0" }}>
+      <h1 className="text-white text-xl leading-snug mt-2 mb-2">{data.title}</h1>
+      <p className="text-dim text-[11px] uppercase mb-8">
         {data.month} {data.year} · {data.tag}
       </p>
 
       {/* Body */}
       <div
-        className="prose"
-        style={{
-          color: "#fff",
-          lineHeight: "1.8",
-        }}
+        className="prose text-white leading-[1.8]"
         dangerouslySetInnerHTML={{ __html: html }}
       />
     </div>

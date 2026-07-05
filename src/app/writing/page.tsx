@@ -1,16 +1,6 @@
 import Link from "next/link";
-import { getAllEntries } from "@/lib/content";
-
-interface Post {
-  [key: string]: unknown;
-  slug: string;
-  title: string;
-  date: string;
-  month: string;
-  year: string;
-  tag: string;
-  placeholder?: boolean;
-}
+import { getAllEntries, type Post } from "@/lib/content";
+import PageHeader from "@/components/PageHeader";
 
 export const metadata = {
   title: "writing",
@@ -23,12 +13,8 @@ export default function WritingPage() {
   );
 
   return (
-    <div style={{ padding: "32px 24px", width: "100%" }}>
-      {/* Header */}
-      <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
-        <span style={{ color: "#777", fontSize: "12px", whiteSpace: "nowrap" }}>ls writing</span>
-        <div style={{ flex: 1, height: "1px", background: "#fff" }} />
-      </div>
+    <div className="px-6 py-8 w-full">
+      <PageHeader label="ls writing" />
 
       {/* Row list */}
       <div>
@@ -36,44 +22,21 @@ export default function WritingPage() {
           <Link
             key={post.slug}
             href={post.placeholder ? "#" : `/writing/${post.slug}`}
-            className="hover-row"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "80px 1fr 80px",
-              alignItems: "baseline",
-              gap: "16px",
-              padding: "12px 0",
-              borderBottom: "1px solid #1a1a1a",
-              color: "#fff",
-            }}
+            className="hover-row grid grid-cols-[80px_1fr_80px] items-baseline gap-4 py-3 border-b border-[#1a1a1a] text-white"
           >
             {/* Date */}
-            <span style={{ color: "#777", fontSize: "11px" }}>
-              <span style={{ display: "block" }}>{post.month}</span>
-              <span style={{ display: "block" }}>{post.year}</span>
+            <span className="text-dim text-[11px]">
+              <span className="block">{post.month}</span>
+              <span className="block">{post.year}</span>
             </span>
 
             {/* Title */}
-            <span
-              style={{
-                fontWeight: "bold",
-                color: post.placeholder ? "#777" : "#fff",
-              }}
-            >
+            <span className={`font-bold ${post.placeholder ? "text-dim" : "text-white"}`}>
               {post.title}
             </span>
 
             {/* Tag */}
-            <span
-              style={{
-                color: "#777",
-                fontSize: "11px",
-                textAlign: "right",
-                textTransform: "uppercase",
-              }}
-            >
-              {post.tag}
-            </span>
+            <span className="text-dim text-[11px] text-right uppercase">{post.tag}</span>
           </Link>
         ))}
       </div>

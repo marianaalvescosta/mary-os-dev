@@ -2,6 +2,12 @@ import fs from "fs";
 import path from "path";
 import sharp from "sharp";
 import ReadmeLayout from "./ReadmeLayout";
+import Tag from "@/components/Tag";
+
+export const metadata = {
+  title: "readme",
+  description: "About Mariana Costa — freelance ops, AI automation, and what's next.",
+};
 
 const stack = [
   "n8n", "claude", "jotform", "webflow",
@@ -24,12 +30,12 @@ const statusItems = [
 
 function SectionHeading({ prefix, label }: { prefix: string; label: string }) {
   return (
-    <div style={{ marginBottom: "16px" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "10px" }}>
-        <span style={{ color: "#777" }}>{prefix}</span>
-        <span style={{ color: "#fff", fontWeight: "bold" }}>{label}</span>
+    <div className="mb-4">
+      <div className="flex items-center gap-2 mb-2.5">
+        <span className="text-dim">{prefix}</span>
+        <span className="text-white font-bold">{label}</span>
       </div>
-      <div style={{ height: "1px", background: "#fff" }} />
+      <div className="h-px bg-white" />
     </div>
   );
 }
@@ -80,145 +86,101 @@ async function getData() {
   return { columns, hero };
 }
 
-export const metadata = {
-  title: "readme",
-  description: "About Mariana Costa — freelance ops, AI automation, and what's next.",
-};
-
 export default async function ReadmePage() {
   const { columns, hero } = await getData();
   return (
     <ReadmeLayout columns={columns} hero={hero}>
       {/* # mariana-costa */}
-        <div style={{ marginBottom: "24px" }}>
-          <span style={{ color: "#777", fontSize: "18px" }}># </span>
-          <span style={{ color: "#fff", fontWeight: "bold", fontSize: "18px" }}>mariana-costa</span>
-        </div>
+      <div className="mb-6">
+        <span className="text-dim text-lg"># </span>
+        <span className="text-white font-bold text-lg">mariana-costa</span>
+      </div>
 
-        {/* Blockquote */}
-        <div
-          style={{
-            borderLeft: "3px solid #fff",
-            background: "#0a0a0a",
-            padding: "14px 20px",
-            marginBottom: "36px",
-            color: "#aaa",
-            fontSize: "13px",
-            lineHeight: "1.9",
-          }}
-        >
-          <p style={{ margin: 0 }}>Business ops and AI automation. Building toward something that&apos;s mine.</p>
-        </div>
+      {/* Blockquote */}
+      <div className="border-l-[3px] border-white bg-panel px-5 py-3.5 mb-9 text-[#aaa] text-[13px] leading-[1.9]">
+        <p className="m-0">Business ops and AI automation. Building toward something that&apos;s mine.</p>
+      </div>
 
-        {/* ## about */}
-        <section style={{ marginBottom: "32px" }}>
-          <SectionHeading prefix="##" label=" about" />
-          <div style={{ color: "#fff", margin: "16px 0 0 0", lineHeight: "1.8" }}>
-            <p style={{ margin: "0 0 16px 0" }}>
-              I&apos;m Mariana. I started freelancing at 19 — as a virtual assistant, building from the ground up,
-              figuring out what I could actually do. Four years later the work looks completely different.
-              Still pointed at the same thing: something of my own.
-            </p>
-            <p style={{ margin: "0 0 16px 0" }}>
-              On paper: business ops and AI automation. In practice: building n8n pipelines and AI integrations
-              for companies, vibecoding personal projects on weekends, going very deep on AI — not in a &quot;I read
-              the newsletters&quot; way, in a &quot;I can&apos;t stop building things with it&quot; way. Running other
-              people&apos;s systems is the job. Building my own is the point.
-            </p>
-            <p style={{ margin: "0 0 16px 0" }}>
-              I travel a lot, because it genuinely changes how you see things. I believe in what other cultures
-              can teach you. Some trips that really shifted my perspective: Indonesia, Colombia, Peru, and the
-              US — every time I&apos;ve been there. Outside of work: I love techno music and spending time with
-              the people that actually make a difference in my life.
-            </p>
-            <p style={{ margin: "0 0 16px 0" }}>
-              One odd thing about me: if I care about something it gets everything — a client problem, a trip
-              I&apos;ve been planning for months, a DJ set I&apos;ve been looking forward to for three weeks.
-              People have a word for that. Intense. I used to take it as an insult. Now I think it&apos;s the
-              perfect word to describe me.
-            </p>
-            <p style={{ margin: 0 }}>
-              The direction: my own company, genuinely technical, eventually the US. Not waiting on one to
-              start the other.
-            </p>
-          </div>
-        </section>
-
-        {/* ## stack */}
-        <section style={{ marginBottom: "32px" }}>
-          <SectionHeading prefix="##" label=" stack" />
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginTop: "16px" }}>
-            {stack.map((s) => (
-              <span
-                key={s}
-                style={{
-                  border: "1px solid #fff",
-                  padding: "3px 10px",
-                  fontSize: "12px",
-                  color: "#fff",
-                }}
-              >
-                {s}
-              </span>
-            ))}
-          </div>
-        </section>
-
-        {/* ## status */}
-        <section style={{ marginBottom: "32px" }}>
-          <SectionHeading prefix="##" label=" status" />
-          <div
-            style={{
-              border: "1px solid #333",
-              padding: "14px 20px",
-              background: "#060606",
-              marginTop: "16px",
-            }}
-          >
-            {statusItems.map((item, i) => (
-              <div
-                key={i}
-                style={{
-                  display: "flex",
-                  gap: "12px",
-                  marginBottom: i < statusItems.length - 1 ? "8px" : 0,
-                  alignItems: "baseline",
-                }}
-              >
-                <span style={{ color: item.done ? "#4ade80" : "#777", flexShrink: 0, fontWeight: "bold" }}>
-                  {item.done ? "[x]" : "[ ]"}
-                </span>
-                <span
-                  style={
-                    item.gradient
-                      ? {
-                          background: "linear-gradient(90deg, #fff 0%, #666 100%)",
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
-                        }
-                      : {
-                          color: item.done ? "#4ade80" : "#fff",
-                          textDecoration: "none",
-                        }
-                  }
-                >
-                  {item.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ## contact */}
-        <section>
-          <SectionHeading prefix="##" label=" contact" />
-          <p style={{ color: "#777", margin: "16px 0 0 0" }}>
-            EMAIL:{" "}
-            <a href="mailto:hi@marianaacosta.com" style={{ color: "#fff" }}>
-              hi@marianaacosta.com
-            </a>
+      {/* ## about */}
+      <section className="mb-8">
+        <SectionHeading prefix="##" label=" about" />
+        <div className="text-white mt-4 leading-[1.8]">
+          <p className="mb-4">
+            I&apos;m Mariana. I started freelancing at 19 — as a virtual assistant, building from the ground up,
+            figuring out what I could actually do. Four years later the work looks completely different.
+            Still pointed at the same thing: something of my own.
           </p>
-        </section>
+          <p className="mb-4">
+            On paper: business ops and AI automation. In practice: building n8n pipelines and AI integrations
+            for companies, vibecoding personal projects on weekends, going very deep on AI — not in a &quot;I read
+            the newsletters&quot; way, in a &quot;I can&apos;t stop building things with it&quot; way. Running other
+            people&apos;s systems is the job. Building my own is the point.
+          </p>
+          <p className="mb-4">
+            I travel a lot, because it genuinely changes how you see things. I believe in what other cultures
+            can teach you. Some trips that really shifted my perspective: Indonesia, Colombia, Peru, and the
+            US — every time I&apos;ve been there. Outside of work: I love techno music and spending time with
+            the people that actually make a difference in my life.
+          </p>
+          <p className="mb-4">
+            One odd thing about me: if I care about something it gets everything — a client problem, a trip
+            I&apos;ve been planning for months, a DJ set I&apos;ve been looking forward to for three weeks.
+            People have a word for that. Intense. I used to take it as an insult. Now I think it&apos;s the
+            perfect word to describe me.
+          </p>
+          <p className="m-0">
+            The direction: my own company, genuinely technical, eventually the US. Not waiting on one to
+            start the other.
+          </p>
+        </div>
+      </section>
+
+      {/* ## stack */}
+      <section className="mb-8">
+        <SectionHeading prefix="##" label=" stack" />
+        <div className="flex flex-wrap gap-2 mt-4">
+          {stack.map((s) => (
+            <span key={s} className="border border-white px-2.5 py-[3px] text-xs text-white">
+              {s}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      {/* ## status */}
+      <section className="mb-8">
+        <SectionHeading prefix="##" label=" status" />
+        <div className="border border-line bg-[#060606] px-5 py-3.5 mt-4">
+          {statusItems.map((item, i) => (
+            <div
+              key={i}
+              className={`flex gap-3 items-baseline ${i < statusItems.length - 1 ? "mb-2" : ""}`}
+            >
+              <span className={`shrink-0 font-bold ${item.done ? "text-accent" : "text-dim"}`}>
+                {item.done ? "[x]" : "[ ]"}
+              </span>
+              <span
+                className={
+                  item.gradient ? "text-gradient" : item.done ? "text-accent" : "text-white"
+                }
+              >
+                {item.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ## contact */}
+      <section>
+        <SectionHeading prefix="##" label=" contact" />
+        <p className="text-dim mt-4">
+          EMAIL:{" "}
+          <a href="mailto:hi@marianaacosta.com" className="text-white">
+            hi@marianaacosta.com
+          </a>
+        </p>
+      </section>
     </ReadmeLayout>
   );
 }

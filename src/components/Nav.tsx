@@ -13,13 +13,7 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <nav
-      className="grid grid-cols-2 md:grid-cols-4"
-      style={{
-        borderBottom: "1px solid #fff",
-        flexShrink: 0,
-      }}
-    >
+    <nav className="grid grid-cols-2 md:grid-cols-4 border-b border-white shrink-0">
       {tabs.map((tab) => {
         const active =
           pathname === tab.href || pathname.startsWith(tab.href + "/");
@@ -27,15 +21,9 @@ export default function Nav() {
           <Link
             key={tab.href}
             href={tab.href}
-            style={{
-              display: "block",
-              padding: "12px 0",
-              textAlign: "center",
-              color: active ? "#fff" : "#777",
-              borderBottom: active ? "2px solid #fff" : "2px solid transparent",
-              marginBottom: "-1px",
-              fontSize: "13px",
-            }}
+            className={`block py-3 text-center text-[13px] border-b-2 -mb-px ${
+              active ? "text-white border-white" : "text-dim border-transparent"
+            }`}
           >
             {tab.label}
           </Link>

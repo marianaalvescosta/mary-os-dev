@@ -276,6 +276,32 @@
     .comp-table td.mb { background: rgba(145,209,173,0.07); }
     .chk { color: var(--green); font-size: 15px; }
     .crs { color: rgba(255,255,255,0.15); font-size: 13px; }
+
+    @media (max-width: 860px) {
+      /* Same root problem as the Loomi deck: .slide is position:absolute
+         with a fixed viewport height and overflow:hidden on the page, so any
+         slide taller than one screen just gets clipped, not scrolled. There
+         was no mobile handling here at all before this. */
+      html, body { height: auto; overflow-y: auto; overflow-x: hidden; }
+      .deck { height: auto; min-height: 100vh; }
+      .slide { padding: 32px 20px 56px; }
+      .slide.active { position: relative; inset: auto; height: auto; min-height: 100vh; }
+
+      /* Slide 1 cover is one flat image at object-fit:cover — on a narrow
+         portrait screen that crops hard into both edges (that's the "PAZ"-
+         style text getting sliced you saw). Contain instead: whole image
+         visible, letterboxed against the slide's own purple background. */
+      .s1-cover-img { height: 100%; object-fit: contain; background: var(--purple); }
+
+      /* Rigid 3-column grid doesn't reflow on its own like the flex sections do. */
+      .s3-grid { grid-template-columns: 1fr; }
+      .feature-img-wrap { height: 180px; }
+
+      /* 7-column comparison table has no room on a phone screen — scroll it
+         horizontally instead of squeezing every column unreadably small. */
+      .comp-table { display: block; overflow-x: auto; white-space: nowrap; }
+      .comp-table th, .comp-table td { padding: 9px 10px; }
+    }
   </style>
 </head>
 <body>

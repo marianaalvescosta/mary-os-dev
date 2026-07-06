@@ -347,12 +347,34 @@
     .contact-val { font-size: 13px; font-weight: 600; color: var(--cream); }
 
     @media (max-width: 860px) {
-      .slide { padding: 36px 24px; }
+      /* The old behavior clipped any slide taller than one screen — hidden,
+         not scrollable. On a narrow phone, several slides ARE taller than
+         one screen (title + tagline + chips + a 512px-tall phone mockup all
+         stacked). Fix: let the active slide grow past 100vh and let the page
+         scroll to it, instead of silently cutting content off. */
+      html, body { height: auto; overflow-y: auto; overflow-x: hidden; }
+      .deck { height: auto; min-height: 100vh; overflow: visible; }
+      .slide { padding: 84px 24px 96px; }
+      /* Only the ACTIVE slide switches out of position:absolute, so its real
+         content height defines how tall the scrollable page is. Exiting/
+         inactive slides stay absolute (untouched, transition unaffected). */
+      .slide.active { position: relative; inset: auto; height: auto; min-height: 100vh; }
       #s1, #s2, #s7 { flex-direction: column; gap: 24px; }
       #s5 .comp-grid { grid-template-columns: 1fr; }
       #s6 .stat-grid { grid-template-columns: 1fr 1fr; }
       #s4 .flow { flex-direction: column; align-items: flex-start; gap: 18px; }
       .step:not(:last-child)::after { display: none; }
+
+      /* Fixed-pixel phone mockup (256x512) doesn't fit a narrow screen at
+         full size — shrink it proportionally, keep its 1:2 aspect ratio. */
+      .phone-frame { width: 46vw; max-width: 220px; height: auto; aspect-ratio: 1 / 2; }
+
+      h1 { font-size: clamp(52px, 16vw, 90px); }
+    }
+
+    @media (max-width: 480px) {
+      .slide { padding-left: 18px; padding-right: 18px; }
+      #s6 .stat-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>

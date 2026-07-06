@@ -362,7 +362,7 @@
       #s1, #s2, #s7 { flex-direction: column; gap: 24px; }
       #s5 .comp-grid { grid-template-columns: 1fr; }
       #s6 .stat-grid { grid-template-columns: 1fr 1fr; }
-      #s4 .flow { flex-direction: column; align-items: flex-start; gap: 18px; }
+      #s4 .flow { flex-direction: column; align-items: center; gap: 18px; }
       .step:not(:last-child)::after { display: none; }
 
       /* Fixed-pixel phone mockup (256x512) doesn't fit a narrow screen at
@@ -697,13 +697,17 @@
     if (e.key === 'ArrowLeft') { e.preventDefault(); navigate(-1); }
   });
 
-  let touchX = null;
-  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+  let touchX = null, touchY = null;
+  document.addEventListener('touchstart', e => {
+    touchX = e.touches[0].clientX;
+    touchY = e.touches[0].clientY;
+  });
   document.addEventListener('touchend', e => {
-    if (!touchX) return;
+    if (touchX === null) return;
     const dx = e.changedTouches[0].clientX - touchX;
-    if (Math.abs(dx) > 50) navigate(dx < 0 ? 1 : -1);
-    touchX = null;
+    const dy = e.changedTouches[0].clientY - touchY;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) navigate(dx < 0 ? 1 : -1);
+    touchX = null; touchY = null;
   });
 </script>
 </body>

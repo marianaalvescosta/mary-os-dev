@@ -360,6 +360,10 @@
          inactive slides stay absolute (untouched, transition unaffected). */
       .slide.active { position: relative; inset: auto; height: auto; min-height: 100vh; }
       #s1, #s2, #s7 { flex-direction: column; gap: 24px; }
+      /* #s1 and #s8 set their own padding-top (ID beats the .slide class
+         rule above, regardless of order), so the mobile top-clearance fix
+         never reached them — logo/counter overlapped the cover title. */
+      #s1, #s8 { padding-top: 90px; }
       #s5 .comp-grid { grid-template-columns: 1fr; }
       #s6 .stat-grid { grid-template-columns: 1fr 1fr; }
       #s4 .flow { flex-direction: column; align-items: center; gap: 18px; }

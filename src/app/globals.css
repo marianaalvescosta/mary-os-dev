@@ -94,6 +94,33 @@ a {
   width: 100%;
 }
 
+/* Loomi write-up: workflow diagram + phone screenshot side by side. On
+   desktop the shared row height (set by the wide/short workflow image) is
+   tall enough for the cropped phone shot to look fine. On mobile the row
+   gets much shorter, so the tall phone screenshot was cropping down to a
+   sliver — stack them instead of cropping. */
+.automation-body .chat-agent-row {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+  margin: 24px 0;
+}
+.automation-body .chat-agent-row img { margin: 0; }
+.automation-body .chat-agent-flow { flex: 3; }
+.automation-body .chat-agent-flow img { width: 100%; height: auto; display: block; }
+.automation-body .chat-agent-shot { flex: 1; overflow: hidden; }
+.automation-body .chat-agent-shot img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .automation-body .chat-agent-row { flex-direction: column; }
+  .automation-body .chat-agent-shot { flex: none; overflow: visible; }
+  .automation-body .chat-agent-shot img { height: auto; object-fit: contain; }
+}
+
 /* Images inside writing posts */
 .prose img {
   margin: 24px 0;

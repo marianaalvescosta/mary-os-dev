@@ -56,12 +56,12 @@ A pipeline syncs every piece of knowledge from Lovable's database to Supabase on
 
 The agent returns structured output: Insights · Supporting atoms · Next steps.
 
-<div style="display:flex;gap:16px;align-items:stretch;margin:24px 0">
-  <div style="flex:3">
-    <img src="/automations/loomi-chat-agent.png" alt="Loomi chat agent pipeline" style="width:100%;height:auto;display:block" />
+<div class="chat-agent-row">
+  <div class="chat-agent-flow">
+    <img src="/automations/loomi-chat-agent.png" alt="Loomi chat agent pipeline" />
   </div>
-  <div style="flex:1;overflow:hidden">
-    <img src="/automations/loomi-chat-agent-screenshot.webp" alt="Loomi chat agent in use" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block" />
+  <div class="chat-agent-shot">
+    <img src="/automations/loomi-chat-agent-screenshot.webp" alt="Loomi chat agent in use" />
   </div>
 </div>
 

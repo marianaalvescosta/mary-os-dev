@@ -11,8 +11,10 @@ type Cell = { n: number; src: string; weight: number; pos?: string };
  * column stretches to the FULL text height (photos crop only slightly via
  * object-fit: cover), so the strip always ends exactly where the text ends.
  *
- * Mobile (below md): the columns drop below the text, shown at their natural
- * height (a 25% side strip is too thin on a phone).
+ * Mobile (below md): a single stacked column drops below the text, shown at
+ * natural height (a 25% side strip is too thin on a phone). Single column,
+ * not the two desktop columns — two independent natural-height columns can
+ * end at different points and leave a blank gap under the shorter one.
  *
  * Both layouts are rendered and toggled with responsive classes, so the
  * server-rendered HTML is correct at any width — no client JS, no flash.
@@ -37,10 +39,12 @@ function Slot({ cell, crop = true }: { cell: Cell; crop?: boolean }) {
 
 export default function ReadmeLayout({
   columns,
+  mobileOrder,
   hero,
   children,
 }: {
   columns: Cell[][];
+  mobileOrder: Cell[];
   hero: Cell | null;
   children: ReactNode;
 }) {
@@ -72,15 +76,11 @@ export default function ReadmeLayout({
         </div>
       </div>
 
-      {/* Mobile: columns below the text, natural height (no cropping) */}
+      {/* Mobile: single stacked column below the text, natural height (no cropping) */}
       <div className="md:hidden border-t border-white">
-        <div className="flex gap-1 p-1 items-start">
-          {columns.map((col, ci) => (
-            <div key={ci} className="flex-1 min-w-0 flex flex-col gap-1">
-              {col.map((cell) => (
-                <Slot key={cell.n} cell={cell} crop={false} />
-              ))}
-            </div>
+        <div className="flex flex-col gap-1 p-1">
+          {mobileOrder.map((cell) => (
+            <Slot key={cell.n} cell={cell} crop={false} />
           ))}
         </div>
         {hero && (

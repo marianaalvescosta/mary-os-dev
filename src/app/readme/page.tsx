@@ -51,7 +51,7 @@ const HERO_N = 10;
 const WEIGHT_SCALE: Record<number, number> = { 11: 1.5, 12: 1.5 };
 // Which part of a cropped photo to show: "50% 50%" = center (default),
 // "50% 100%" = bottom, "50% 0%" = top. Higher 2nd value = show lower.
-const OBJECT_POSITION: Record<number, string> = { 11: "50% 75%" };
+const OBJECT_POSITION: Record<number, string> = { 11: "50% 90%" };
 
 // Read every photo's real aspect ratio. `weight` = natural height per unit
 // width, so each slot keeps the photo's real shape (portraits tall, landscapes

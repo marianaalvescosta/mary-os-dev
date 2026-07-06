@@ -93,3 +93,35 @@ a {
   display: block;
   width: 100%;
 }
+
+/* Images inside writing posts */
+.prose img {
+  margin: 24px 0;
+  display: block;
+  width: 100%;
+  border: 1px solid #333;
+}
+
+/* Side-by-side image pairs inside writing posts */
+.prose .img-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 24px 0;
+}
+.prose .img-row figure {
+  margin: 0;
+}
+.prose .img-row img {
+  margin: 0;
+  display: block;
+  height: 260px;
+  width: auto;
+  max-width: 100%;
+  border: 1px solid #333;
+}
+.prose .img-row figcaption {
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--color-dim);
+}

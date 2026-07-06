@@ -688,6 +688,7 @@
     current = n;
     document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i + 1 === current));
     document.getElementById('counter').textContent = current + ' / ' + TOTAL;
+    window.scrollTo(0, 0);
   }
 
   function navigate(dir) { goTo(current + dir); }

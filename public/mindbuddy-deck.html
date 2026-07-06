@@ -291,7 +291,8 @@
          portrait screen that crops hard into both edges (that's the "PAZ"-
          style text getting sliced you saw). Contain instead: whole image
          visible, letterboxed against the slide's own purple background. */
-      .s1-cover-img { height: 100%; object-fit: contain; background: var(--purple); }
+      .s1 { justify-content: center; }
+      .s1-cover-img { height: 100vh; object-fit: contain; background: var(--purple); }
 
       /* Rigid 3-column grid doesn't reflow on its own like the flex sections do. */
       .s3-grid { grid-template-columns: 1fr; }

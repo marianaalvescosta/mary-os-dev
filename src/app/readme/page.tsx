@@ -82,15 +82,14 @@ async function getData() {
 
   const pick = (nums: number[]) => nums.map((n) => byN.get(n)).filter((c) => c != null);
   const columns = [pick(LEFT_COL), pick(RIGHT_COL)];
-  const mobileOrder = pick([...LEFT_COL, ...RIGHT_COL].sort((a, b) => a - b));
   const hero = byN.get(HERO_N) ?? null;
-  return { columns, mobileOrder, hero };
+  return { columns, hero };
 }
 
 export default async function ReadmePage() {
-  const { columns, mobileOrder, hero } = await getData();
+  const { columns, hero } = await getData();
   return (
-    <ReadmeLayout columns={columns} mobileOrder={mobileOrder} hero={hero}>
+    <ReadmeLayout columns={columns} hero={hero}>
       {/* # mariana-costa */}
       <div className="mb-6">
         <span className="text-dim text-lg"># </span>

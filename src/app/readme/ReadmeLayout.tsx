@@ -12,7 +12,11 @@ type Cell = { n: number; src: string; weight: number; pos?: string };
  * object-fit: cover), so the strip always ends exactly where the text ends.
  *
  * Mobile (below md): the columns drop below the text, shown at their natural
- * height (a 25% side strip is too thin on a phone).
+ * height (a 25% side strip is too thin on a phone). The two columns can end
+ * at different natural heights (different photo counts/aspects), so the row
+ * stretches both columns to match the taller one, and each column's LAST
+ * photo grows + crops to absorb whatever gap that leaves — every other photo
+ * stays fully natural/uncropped.
  *
  * Both layouts are rendered and toggled with responsive classes, so the
  * server-rendered HTML is correct at any width — no client JS, no flash.
@@ -20,15 +24,15 @@ type Cell = { n: number; src: string; weight: number; pos?: string };
 
 // One masonry cell: a photo whose height follows `weight` (its real aspect),
 // cropped to fill. The flex weight is data-driven, so it stays an inline style.
-function Slot({ cell, crop = true }: { cell: Cell; crop?: boolean }) {
-  const img: CSSProperties = crop
+// `grow` (mobile only): stretches + crops to absorb leftover column space.
+function Slot({ cell, crop = true, grow = false }: { cell: Cell; crop?: boolean; grow?: boolean }) {
+  const useCrop = crop || grow;
+  const img: CSSProperties = useCrop
     ? { width: "100%", height: "100%", objectFit: "cover", objectPosition: cell.pos ?? "center", display: "block" }
     : { width: "100%", height: "auto", display: "block" };
+  const flex = grow ? "1 1 0%" : crop ? `${cell.weight} 1 0` : "0 0 auto";
   return (
-    <div
-      className="overflow-hidden min-h-0 min-w-0"
-      style={{ flex: crop ? `${cell.weight} 1 0` : "0 0 auto" }}
-    >
+    <div className="overflow-hidden min-h-0 min-w-0" style={{ flex }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={cell.src} alt="" style={img} />
     </div>
@@ -72,13 +76,15 @@ export default function ReadmeLayout({
         </div>
       </div>
 
-      {/* Mobile: columns below the text, natural height (no cropping) */}
+      {/* Mobile: columns below the text, natural height (no cropping) except
+          the last photo in each column, which grows/crops to close the gap
+          left by the shorter column */}
       <div className="md:hidden border-t border-white">
-        <div className="flex gap-1 p-1 items-start">
+        <div className="flex gap-1 p-1">
           {columns.map((col, ci) => (
             <div key={ci} className="flex-1 min-w-0 flex flex-col gap-1">
-              {col.map((cell) => (
-                <Slot key={cell.n} cell={cell} crop={false} />
+              {col.map((cell, i) => (
+                <Slot key={cell.n} cell={cell} crop={false} grow={i === col.length - 1} />
               ))}
             </div>
           ))}

@@ -506,6 +506,8 @@
     dotsEl.children[cur].classList.add('active');
     counter.textContent = `${cur + 1} / ${TOTAL}`;
     window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   }
   function next() { go(cur + 1); }
   function prev() { go(cur - 1); }

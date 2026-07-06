@@ -48,7 +48,7 @@ function SectionHeading({ prefix, label }: { prefix: string; label: string }) {
 const LEFT_COL = [1, 5, 7, 9, 11];
 const RIGHT_COL = [2, 3, 4, 6, 8, 12];
 const HERO_N = 10;
-const WEIGHT_SCALE: Record<number, number> = { 11: 0.5 };
+const WEIGHT_SCALE: Record<number, number> = { 11: 1.5, 12: 1.5 };
 // Which part of a cropped photo to show: "50% 50%" = center (default),
 // "50% 100%" = bottom, "50% 0%" = top. Higher 2nd value = show lower.
 const OBJECT_POSITION: Record<number, string> = { 11: "50% 75%" };
